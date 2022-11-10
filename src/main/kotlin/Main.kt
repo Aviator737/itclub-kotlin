@@ -1,43 +1,32 @@
-var balance: Double = 0.0
-
-var userName: String = "Roman S."
-
-val friends = mutableListOf<String>("Nikolay", "Diman", "Nikita", "Alex", "Oleg")
-
 fun main(args: Array<String>) {
-    val title: String = "Оплата"
+    val mainUser = People("Roman")
 
-    changeBalance(-200.0)
-    changeName("Nikita")
+    val drug1 = People("drug1")
+    val drug2 = People("drug2")
+    val drug3 = People("drug3")
+    val drug4 = People("drug4")
+    drug1.liveTime = 67
+    drug2.liveTime = 102
+    drug3.liveTime = 95
+    drug4.liveTime = 38
 
-    val balance = showBalance()
-    println(balance)
+    mainUser.friends.addAll(
+        listOf(drug1, drug2, drug3, drug4)
+    )
 
-    println(title)
+//    mainUser.friends.add(drug1)
+//    mainUser.friends.add(drug2)
+//    mainUser.friends.add(drug3)
+//    mainUser.friends.add(drug4)
 
-    if (balance >= 0) {
-        println("баланс положительный")
-    } else {
-        println("баланс отрицательный")
+    mainUser.friends.forEach {
+        println("${it.name} ${it.eat()}")
     }
 
-    showFriends()
-}
-
-fun changeBalance(toChange: Double) {
-    balance += toChange
-}
-
-fun changeName(inputName: String) {
-    userName = inputName
-}
-
-fun showBalance(): Double {
-    return balance
-}
-
-fun showFriends() {
-    friends.forEachIndexed { i, element ->
-        println("друг № $i: $element")
+    when {
+        mainUser.friends.size == 0 -> println("У пользователя нет друзей")
+        mainUser.friends.size == 1 -> println("У пользователя 1 друг")
+        mainUser.friends.size > 2 && mainUser.friends.size < 7 -> println("У пользователя несколько друзей")
+        else -> println("У пользователя много друзей")
     }
 }
