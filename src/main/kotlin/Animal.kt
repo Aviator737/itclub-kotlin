@@ -1,11 +1,15 @@
-open class Animal {
-    open val liveTime: Int = 10
+open class Animal : IAnimal {
+    companion object {
+        var test = ""
+    }
 
-    open fun eat(): String {
+    override val liveTime: Int = 10
+
+    override fun eat(): String {
         return "кушаю"
     }
 
-    open fun grow(amount: Int) {
+    override fun grow(amount: Int) {
         println("вырос на $amount")
     }
 }

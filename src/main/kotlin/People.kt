@@ -1,4 +1,8 @@
-class People(var name: String) : Animal() {
+class People(
+    var name: String,
+    val peopleType: PeopleType,
+    val peopleTypeS: PeopleTypeS
+) : Animal() {
 
     val money: Double = 0.0
 
